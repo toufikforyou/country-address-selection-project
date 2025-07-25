@@ -28,8 +28,8 @@
           <h2>Using JavaScript File (country.js)</h2>
           <form>
             <div class="form-group" data-level="division">
-              <label for="js-divisions">Select Division</label>
-              <select id="js-divisions" onchange="jsDivisionList()">
+              <label for="divisions">Select Division</label>
+              <select id="divisions" onchange="division_list()">
                 <option disabled selected>Select Division</option>
                 <option value="Barishal">Barishal</option>
                 <option value="Chattogram">Chattogram</option>
@@ -43,29 +43,29 @@
             </div>
 
             <div class="form-group" data-level="district">
-              <label for="js-districts">Select District</label>
-              <select id="js-districts" onchange="jsDistrictList()">
+              <label for="distr">Select District</label>
+              <select id="distr" onchange="zilaList()">
                 <option disabled selected>Select District</option>
               </select>
             </div>
 
             <div class="form-group" data-level="upazila">
-              <label for="js-upazilas">Select Upazila</label>
-              <select id="js-upazilas" onchange="jsUpazilaList()">
+              <label for="polic_sta">Select Upazila</label>
+              <select id="polic_sta" onchange="upzilaList()">
                 <option disabled selected>Select Upazila</option>
               </select>
             </div>
 
             <div class="form-group" data-level="union">
-              <label for="js-unions">Select Union</label>
-              <select id="js-unions" onchange="jsUnionList()">
+              <label for="union_list">Select Union</label>
+              <select id="union_list" onchange="unionList()">
                 <option disabled selected>Select Union</option>
               </select>
             </div>
 
             <div class="form-group" data-level="village">
-              <label for="js-villages">Select Village</label>
-              <select id="js-villages">
+              <label for="village_list">Select Village</label>
+              <select id="village_list">
                 <option disabled selected>Select Village</option>
               </select>
             </div>
@@ -115,6 +115,7 @@
       </div>
     </div>
 
+    <script src="./js/country.js"></script>
     <script src="./js/app.js"></script>
   </body>
 </html>
