@@ -1,22 +1,9 @@
-/**
- * Bangladesh Address Selection - Complete Administrative Levels Demo
- * JavaScript functionality for comparing hardcoded vs JSON data approaches
- * Supports: Divisions, Districts, Upazilas, Unions, and Villages
- */
-
-// Global variable for JSON data
 let countryData = null;
 
-/**
- * Initialize the application when DOM is loaded
- */
 document.addEventListener('DOMContentLoaded', function() {
   loadCountryData();
 });
 
-/**
- * Load JSON data asynchronously
- */
 async function loadCountryData() {
   try {
     const response = await fetch('./json/country.json');
@@ -32,9 +19,6 @@ async function loadCountryData() {
   }
 }
 
-/**
- * Populate JSON divisions dropdown
- */
 function populateJsonDivisions() {
   if (!countryData || !countryData.division) return;
   
@@ -50,133 +34,6 @@ function populateJsonDivisions() {
   divisionsSelect.innerHTML = optionsHTML;
 }
 
-// ===== JAVASCRIPT HARDCODED APPROACH =====
-
-/**
- * Handle JavaScript hardcoded division selection
- */
-function jsDivisionList() {
-  const divisionValue = document.getElementById('js-divisions')?.value;
-  if (!divisionValue) return;
-  
-  let districtOptions = '<option disabled selected>Select District</option>';
-
-  // District mapping for each division
-  const divisionDistrictMap = {
-    'Barishal': ['Barguna', 'Bhola', 'Barishal', 'Jhalokati', 'Pirojpur', 'Patuakhali'],
-    'Chattogram': ['Bandarban', 'Brahmanbaria', 'Chandpur', 'Chattogram', 'Cumilla', 'Coxs Bazar', 'Lakshmipur', 'Feni', 'Khagrachhari', 'Noakhali', 'Rangamati'],
-    'Dhaka': ['Dhaka', 'Faridpur', 'Gazipur', 'Gopalganj', 'Kishoreganj', 'Madaripur', 'Manikganj', 'Munshiganj', 'Narayanganj', 'Narsingdi', 'Rajbari', 'Shariatpur', 'Tangail'],
-    'Khulna': ['Jashore', 'Satkhira', 'Meherpur', 'Narail', 'Chuadanga', 'Kushtia', 'Khulna', 'Bagerhat', 'Magura', 'Jhenaidah'],
-    'Mymensingh': ['Sherpur', 'Mymensingh', 'Jamalpur', 'Netrokona'],
-    'Rajshahi': ['Sirajgonj', 'Bogura', 'Rajshahi', 'Pabna', 'Natore', 'Naogaon', 'Joypurhat', 'Chapainawabganj'],
-    'Rangpur': ['Kurigram', 'Rangpur', 'Thakurgaon', 'Gaibandha', 'Nilphamari', 'Lalmonirhat', 'Dinajpur', 'Panchagarh'],
-    'Sylhet': ['Sunamganj', 'Habiganj', 'Sylhet', 'Moulvibazar']
-  };
-
-  const districts = divisionDistrictMap[divisionValue];
-  if (districts) {
-    districts.forEach(district => {
-      districtOptions += `<option value="${district}">${district}</option>`;
-    });
-  }
-
-  const districtSelect = document.getElementById('js-districts');
-  if (districtSelect) {
-    districtSelect.innerHTML = districtOptions;
-  }
-
-  // Clear subsequent dropdowns
-  clearDropdown('js-upazilas', 'Select Upazila');
-  clearDropdown('js-unions', 'Select Union');
-  clearDropdown('js-villages', 'Select Village');
-}
-
-/**
- * Handle JavaScript hardcoded district selection
- */
-function jsDistrictList() {
-  const selectedDistrict = document.getElementById('js-districts')?.value;
-  if (!selectedDistrict) return;
-  
-  // For demo purposes, showing sample upazilas for some districts
-  const districtUpazilaMap = {
-    'Dhaka': ['Savar', 'Dhamrai', 'Keraniganj', 'Nawabganj', 'Dohar'],
-    'Chattogram': ['Anwara', 'Banshkhali', 'Boalkhali', 'Chandnaish', 'Fatikchhari'],
-    'Barishal': ['Agailjhara', 'Babuganj', 'Bakerganj', 'Banaripara', 'Gaurnadi'],
-    // Add more as needed
-  };
-
-  let upazilaOptions = '<option disabled selected>Select Upazila</option>';
-  const upazilas = districtUpazilaMap[selectedDistrict];
-  
-  if (upazilas) {
-    upazilas.forEach(upazila => {
-      upazilaOptions += `<option value="${upazila}">${upazila}</option>`;
-    });
-  } else {
-    upazilaOptions += '<option disabled>No upazilas available (demo data)</option>';
-  }
-
-  const upazilaSelect = document.getElementById('js-upazilas');
-  if (upazilaSelect) {
-    upazilaSelect.innerHTML = upazilaOptions;
-  }
-
-  // Clear subsequent dropdowns
-  clearDropdown('js-unions', 'Select Union');
-  clearDropdown('js-villages', 'Select Village');
-  
-  console.log('JS District selected:', selectedDistrict);
-}
-
-/**
- * Handle JavaScript hardcoded upazila selection
- */
-function jsUpazilaList() {
-  const selectedUpazila = document.getElementById('js-upazilas')?.value;
-  if (!selectedUpazila) return;
-
-  // Sample unions for demo
-  let unionOptions = '<option disabled selected>Select Union</option>';
-  unionOptions += '<option value="Sample Union 1">Sample Union 1</option>';
-  unionOptions += '<option value="Sample Union 2">Sample Union 2</option>';
-  unionOptions += '<option disabled>Limited demo data available</option>';
-
-  const unionSelect = document.getElementById('js-unions');
-  if (unionSelect) {
-    unionSelect.innerHTML = unionOptions;
-  }
-
-  clearDropdown('js-villages', 'Select Village');
-  console.log('JS Upazila selected:', selectedUpazila);
-}
-
-/**
- * Handle JavaScript hardcoded union selection
- */
-function jsUnionList() {
-  const selectedUnion = document.getElementById('js-unions')?.value;
-  if (!selectedUnion) return;
-
-  // Sample villages for demo
-  let villageOptions = '<option disabled selected>Select Village</option>';
-  villageOptions += '<option value="Sample Village 1">Sample Village 1</option>';
-  villageOptions += '<option value="Sample Village 2">Sample Village 2</option>';
-  villageOptions += '<option disabled>Limited demo data available</option>';
-
-  const villageSelect = document.getElementById('js-villages');
-  if (villageSelect) {
-    villageSelect.innerHTML = villageOptions;
-  }
-
-  console.log('JS Union selected:', selectedUnion);
-}
-
-// ===== JSON FILE APPROACH =====
-
-/**
- * Handle JSON division selection
- */
 function jsonDivisionList() {
   const selectedDivision = document.getElementById('json-divisions')?.value;
   
@@ -197,15 +54,11 @@ function jsonDivisionList() {
     }
   }
 
-  // Clear subsequent dropdowns
   clearDropdown('json-upazilas', 'Select Upazila');
   clearDropdown('json-unions', 'Select Union');
   clearDropdown('json-villages', 'Select Village');
 }
 
-/**
- * Handle JSON district selection
- */
 function jsonDistrictList() {
   const selectedDivision = document.getElementById('json-divisions')?.value;
   const selectedDistrict = document.getElementById('json-districts')?.value;
@@ -228,16 +81,12 @@ function jsonDistrictList() {
     }
   }
 
-  // Clear subsequent dropdowns
   clearDropdown('json-unions', 'Select Union');
   clearDropdown('json-villages', 'Select Village');
   
   console.log('JSON District selected:', selectedDistrict);
 }
 
-/**
- * Handle JSON upazila selection
- */
 function jsonUpazilaList() {
   const selectedDivision = document.getElementById('json-divisions')?.value;
   const selectedDistrict = document.getElementById('json-districts')?.value;
@@ -268,9 +117,6 @@ function jsonUpazilaList() {
   console.log('JSON Upazila selected:', selectedUpazila);
 }
 
-/**
- * Handle JSON union selection
- */
 function jsonUnionList() {
   const selectedDivision = document.getElementById('json-divisions')?.value;
   const selectedDistrict = document.getElementById('json-districts')?.value;
@@ -290,7 +136,6 @@ function jsonUnionList() {
     union.village.forEach(village => {
       if (village.name) {
         if (Array.isArray(village.name)) {
-          // Handle array of village names
           village.name.forEach(villageName => {
             villageHTML += `<option value="${villageName}">${villageName}</option>`;
           });
@@ -305,7 +150,6 @@ function jsonUnionList() {
       villageSelect.innerHTML = villageHTML;
     }
   } else {
-    // If no villages available
     const villageSelect = document.getElementById('json-villages');
     if (villageSelect) {
       villageSelect.innerHTML = '<option disabled selected>No villages available</option>';
@@ -315,11 +159,6 @@ function jsonUnionList() {
   console.log('JSON Union selected:', selectedUnion);
 }
 
-// ===== UTILITY FUNCTIONS =====
-
-/**
- * Utility function to clear dropdown selections
- */
 function clearDropdown(elementId, defaultText) {
   const element = document.getElementById(elementId);
   if (element) {
@@ -327,9 +166,6 @@ function clearDropdown(elementId, defaultText) {
   }
 }
 
-/**
- * Get selected values from both forms for comparison
- */
 function getSelectedValues() {
   return {
     js: {
@@ -349,29 +185,8 @@ function getSelectedValues() {
   };
 }
 
-/**
- * Display complete address information (utility function)
- */
 function showCompleteAddress() {
   const values = getSelectedValues();
   console.log('Complete Address Data:', values);
   return values;
-}
-
-// Export functions for potential module use
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    loadCountryData,
-    jsDivisionList,
-    jsDistrictList,
-    jsUpazilaList,
-    jsUnionList,
-    jsonDivisionList,
-    jsonDistrictList,
-    jsonUpazilaList,
-    jsonUnionList,
-    getSelectedValues,
-    clearDropdown,
-    showCompleteAddress
-  };
 }

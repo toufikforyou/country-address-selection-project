@@ -1,13 +1,9 @@
-// Division Section select
 function division_list() {
-	// get value from division lists
 	var diviList = document.getElementById('divisions').value;
 
-	// set barishal division districts
 	if(diviList == 'Barishal'){
 		var disctList = '<option disabled selected>Select Zila</option><option value="Barguna">Barguna</option><option value="Bhola">Bhola</option><option value="Barishal">Barishal</option><option value="Jhalokati">Jhalokati</option><option value="Pirojpur">Pirojpur</option><option value="Patuakhali">Patuakhali</option>';
 	}
-	// set Chittagong division districts
 	else if(diviList == 'Chattogram') {
 		var disctList = '<option disabled selected>Select Zila</option><option value="Bandarban">Bandarban</option><option value="Brahmanbaria">Brahmanbaria</option><option value="Chandpur">Chandpur</option><option value="Chattogram">Chattogram</option><option value="Cumilla">Cumilla</option><option value="Coxs Bazar">Coxs Bazar</option><option value="Lakshmipur">Lakshmipur</option><option value="Feni">Feni</option><option value="Khagrachhari">Khagrachhari</option><option value="Noakhali">Noakhali</option><option value="Rangamati">Rangamati</option>';
 	}
