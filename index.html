@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bangladesh Address Selection - Comparison Demo</title>
+    <meta
+      name="description"
+      content="Compare JavaScript hardcoded data vs JSON file data for Bangladesh address selection"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/comparison.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Bangladesh Address Selection</h1>
+        <p>
+          Complete administrative hierarchy: Divisions → Districts → Upazilas →
+          Unions → Villages<br />
+          Compare JavaScript hardcoded data vs JSON file data approaches
+        </p>
+      </div>
+
+      <div class="comparison-wrapper">
+        <!-- JavaScript Selection Box -->
+        <div class="selection-box">
+          <h2>Using JavaScript File (country.js)</h2>
+          <form>
+            <div class="form-group" data-level="division">
+              <label for="js-divisions">Select Division</label>
+              <select id="js-divisions" onchange="jsDivisionList()">
+                <option disabled selected>Select Division</option>
+                <option value="Barishal">Barishal</option>
+                <option value="Chattogram">Chattogram</option>
+                <option value="Dhaka">Dhaka</option>
+                <option value="Khulna">Khulna</option>
+                <option value="Mymensingh">Mymensingh</option>
+                <option value="Rajshahi">Rajshahi</option>
+                <option value="Rangpur">Rangpur</option>
+                <option value="Sylhet">Sylhet</option>
+              </select>
+            </div>
+
+            <div class="form-group" data-level="district">
+              <label for="js-districts">Select District</label>
+              <select id="js-districts" onchange="jsDistrictList()">
+                <option disabled selected>Select District</option>
+              </select>
+            </div>
+
+            <div class="form-group" data-level="upazila">
+              <label for="js-upazilas">Select Upazila</label>
+              <select id="js-upazilas" onchange="jsUpazilaList()">
+                <option disabled selected>Select Upazila</option>
+              </select>
+            </div>
+
+            <div class="form-group" data-level="union">
+              <label for="js-unions">Select Union</label>
+              <select id="js-unions" onchange="jsUnionList()">
+                <option disabled selected>Select Union</option>
+              </select>
+            </div>
+
+            <div class="form-group" data-level="village">
+              <label for="js-villages">Select Village</label>
+              <select id="js-villages">
+                <option disabled selected>Select Village</option>
+              </select>
+            </div>
+          </form>
+        </div>
+
+        <!-- JSON Selection Box -->
+        <div class="selection-box">
+          <h2>Using JSON File (country.json)</h2>
+          <form>
+            <div class="form-group" data-level="division">
+              <label for="json-divisions">Select Division</label>
+              <select id="json-divisions" onchange="jsonDivisionList()">
+                <option disabled selected>Loading divisions...</option>
+              </select>
+            </div>
+
+            <div class="form-group" data-level="district">
+              <label for="json-districts">Select District</label>
+              <select id="json-districts" onchange="jsonDistrictList()">
+                <option disabled selected>Select District</option>
+              </select>
+            </div>
+
+            <div class="form-group" data-level="upazila">
+              <label for="json-upazilas">Select Upazila</label>
+              <select id="json-upazilas" onchange="jsonUpazilaList()">
+                <option disabled selected>Select Upazila</option>
+              </select>
+            </div>
+
+            <div class="form-group" data-level="union">
+              <label for="json-unions">Select Union</label>
+              <select id="json-unions" onchange="jsonUnionList()">
+                <option disabled selected>Select Union</option>
+              </select>
+            </div>
+
+            <div class="form-group" data-level="village">
+              <label for="json-villages">Select Village</label>
+              <select id="json-villages">
+                <option disabled selected>Select Village</option>
+              </select>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/app.js"></script>
+  </body>
+</html>
